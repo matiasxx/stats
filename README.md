@@ -16,7 +16,7 @@ To produce a deployable production mode WAR:
 - run "mvn clean package"
 - test the war file with "mvn jetty:run-war"
 
-Client-Side compilation
+Client-Side compilation2
 -------------------------
 
 The generated maven project is using an automatically generated widgetset by default. 
