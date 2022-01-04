@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreporte_licencias_titulo" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d3fbf2de-9338-4e42-9eb3-b27be34b39d8">
+	<property name="ireport.zoom" value="1.7715610000000022"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="parameter2" class="java.lang.String"/>
+	<parameter name="parameter3" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="512" splitType="Stretch">
+			<staticText>
+				<reportElement x="66" y="223" width="117" height="20" uuid="9c0c7c6f-14b3-43a5-b7c1-ef3f8b6ff3fb"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TABLA DE DATOS]]></text>
+			</staticText>
+			<image>
+				<reportElement x="94" y="10" width="429" height="69" uuid="26a7c1e7-5b7e-4aac-bfc8-7663270fc23a"/>
+				<imageExpression><![CDATA[getClass().getResource("/imagenes/encab_rep.jpg")]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="66" y="263" width="117" height="20" uuid="d2769f58-96e8-4e1e-bb53-68890de7c692"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="283" width="354" height="27" uuid="4d66d8e5-2070-4bc6-92de-44b0e77edcbf"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Informe estadístico generado a partir de los datos suministrados la Dirección General de Licencias de Conducir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="203" width="100" height="20" uuid="f7cf55d6-91d5-45b2-a55d-299322158f9c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Tránsito y Transporte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="79" width="545" height="35" uuid="9cea760c-9477-4d15-a6a2-5fac09a84bfb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADISTICAS GENERALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="243" width="354" height="20" uuid="e99d91e2-f958-4283-95df-cc7dc4fadef1"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Licencias de conducir emitidas por la Municipalidad de Comodoro Rivadavia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="183" width="117" height="20" uuid="3a3f2ff2-f3d6-4585-8982-a2cfa5bb2cf3"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ÁREA TEMÁTICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="311" width="117" height="20" uuid="01b6b14a-2457-42b4-b426-c147c98be7ad"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[METODOLOGÍA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="331" width="354" height="43" uuid="50b9213d-260f-4b3b-ae1c-107012a12980"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Los datos surgen de la base de datos a partir del procesamiento realizado por la Dirección General de Licencias de Conducir y la Dirección de
+Investigación Territorial con el aporte del Sistema de Gestión de Calidad. Soporte web de Gestión Digital Participativa.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="395" width="354" height="19" uuid="d0388f35-b33f-4a8a-941f-cac318987a85"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Personas y licencias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="375" width="140" height="20" uuid="b6c9734b-0568-4898-9e90-9ad9c95bde9a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIDADES DE MEDIDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="420" width="140" height="20" uuid="edbf9396-7fba-423d-804c-791d8d9556c1"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OBSERVACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="183" width="53" height="40" forecolor="#3399FF" uuid="da5f2e33-bd15-4f55-b2bb-829526d728d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="20"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="223" width="53" height="40" forecolor="#3399FF" uuid="95adb8d5-0d42-4732-a2a7-0f8f0b63dd00"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="20"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="263" width="53" height="40" forecolor="#3399FF" uuid="04b06447-90fe-48c4-abe9-e5acafdacee2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="20"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="311" width="53" height="44" forecolor="#3399FF" uuid="62b252f5-af2c-4e0a-a010-c8959e6e9739"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="20"/>
+				</textElement>
+				<text><![CDATA[4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="374" width="53" height="40" forecolor="#3399FF" uuid="832aa96d-61af-4489-a257-14288d2943ad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="20"/>
+				</textElement>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="417" width="53" height="40" forecolor="#3399FF" uuid="5f10ebc4-af0e-44cf-9e2b-ad2190003204"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="20"/>
+				</textElement>
+				<text><![CDATA[6]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="114" width="545" height="20" uuid="3f5bf3e0-71f7-4625-933f-237b796a4262"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["Desde el "+$P{parameter1}+" al "+$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="13" y="133" width="542" height="20" uuid="719ca8e2-3eac-4c14-9d18-3c4666c21037"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Centro de Emisión: "+ $P{parameter3}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="66" y="429" width="354" height="61" uuid="4a8542e2-1bd8-4d56-90f7-008ce61e316b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA["Propuesta de Presentación: Mensual. <br> Fecha emison del reporte: "
++new java.text.SimpleDateFormat("dd-MM-YYYY", new Locale("es","ES")).format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="50"/>
+	</pageFooter>
+</jasperReport>

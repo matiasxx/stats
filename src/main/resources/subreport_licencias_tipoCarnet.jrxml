@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreport_licencias_tipoCarnet" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c6b29a56-19a1-4ed4-9f8b-ba5b4d7470aa">
+	<property name="ireport.zoom" value="2.5937424601000023"/>
+	<property name="ireport.x" value="212"/>
+	<property name="ireport.y" value="177"/>
+	<parameter name="filter" class="java.lang.String"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="parameter2" class="java.lang.String"/>
+	<parameter name="parameter3" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select vlp.idLicencia as idLicencia,
+		vlp.fechaCarga as fechaCarga,
+		tdc.idTipos as idTipoCarne,
+		tdc.tiposDeCarne as tipoDeCarne
+ from v_licencias_personas vlp inner join tipoDeCarnet tdc on (vlp.idTipoDeCarne =tdc.idTipos)
+where $P!{filter}]]>
+	</queryString>
+	<field name="idLicencia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaCarga" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idTipoCarne" class="java.lang.Integer"/>
+	<field name="tipoDeCarne" class="java.lang.String"/>
+	<variable name="totalOriginal" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{tipoDeCarne}.equalsIgnoreCase("ORIGINAL") ? 1:0]]></variableExpression>
+	</variable>
+	<variable name="totalRenovacion" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{tipoDeCarne}.equalsIgnoreCase("RENOVACION") ? 1:0]]></variableExpression>
+	</variable>
+	<variable name="totalDuplicado" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{tipoDeCarne}.equalsIgnoreCase("DUPLICADO") ? 1:0]]></variableExpression>
+	</variable>
+	<variable name="totalDuplicadoCambio" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{tipoDeCarne}.equalsIgnoreCase("DUPLICADO POR CAMBIO DE DATOS") ? 1:0]]></variableExpression>
+	</variable>
+	<variable name="totalAmpCambioClase" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{tipoDeCarne}.equalsIgnoreCase("AMP. CON CAMBIO DE CLASE") ? 1:0]]></variableExpression>
+	</variable>
+	<variable name="totalRenovacionAmpliacion" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{tipoDeCarne}.equalsIgnoreCase("RENOVACION CON AMPLIACION") ? 1:0]]></variableExpression>
+	</variable>
+	<variable name="totalTipoCategoria" class="java.lang.Integer">
+		<variableExpression><![CDATA[$V{totalOriginal}+$V{totalRenovacion}+$V{totalDuplicado}
++$V{totalDuplicadoCambio}+$V{totalAmpCambioClase}
++$V{totalRenovacionAmpliacion}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="257" splitType="Stretch">
+			<staticText>
+				<reportElement x="317" y="50" width="47" height="20" uuid="915eeddf-d94c-4bcf-985a-ae977cbc47ed"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="30" width="126" height="20" uuid="0f138733-4882-43f7-a20b-c825c6997691"/>
+				<textElement>
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Cuadro 5. Tipo de categorías.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="189" y="50" width="128" height="20" backcolor="#330033" uuid="5f128747-48ab-4ff0-bac1-305b53edfd0c"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="true" isStrikeThrough="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Categorias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="189" y="70" width="128" height="20" backcolor="#330033" uuid="b760c157-d7f0-4d1b-a4fb-f1c610592321"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false" isStrikeThrough="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Original]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="189" y="90" width="128" height="20" backcolor="#330033" uuid="1da29b2f-3db0-4efc-b485-85e3825b2f86"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false" isStrikeThrough="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Renovacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="189" y="110" width="128" height="20" backcolor="#330033" uuid="c74ea58a-6008-4061-b46f-d5da968ec614"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false" isStrikeThrough="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Duplicado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="189" y="130" width="128" height="20" backcolor="#330033" uuid="d01c1657-148f-4a26-9cf1-4519c4bcee5e"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false" isStrikeThrough="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Duplicado por cambio de datos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="189" y="150" width="128" height="20" backcolor="#330033" uuid="88c0898b-acb3-40c5-aeae-c4bb92ae7fac"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false" isStrikeThrough="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Amp. con cambio de clase]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="189" y="170" width="128" height="20" backcolor="#330033" uuid="75c85897-5b9e-4a7d-a86c-0fbdf11ea6f8"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false" isStrikeThrough="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Renovación con ampliación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="189" y="190" width="128" height="20" backcolor="#330033" uuid="37c30cf8-213b-41ab-8d7f-97e2693d35fd"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="true" isStrikeThrough="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="317" y="70" width="47" height="20" uuid="2511722d-ac2c-44aa-9c52-2480342c517c"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph spacingBefore="2" spacingAfter="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalOriginal}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="317" y="90" width="47" height="20" uuid="60e0fe2a-6e24-4d2a-b13d-0768463c9217"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph spacingBefore="2" spacingAfter="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalRenovacion}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="317" y="110" width="47" height="20" uuid="2cd64989-5ed0-4aa0-b9dd-ee85a636630e"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph spacingBefore="2" spacingAfter="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalDuplicado}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="317" y="130" width="47" height="20" uuid="807927c9-e600-4e7d-89a6-cb272ce40bdf"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph spacingBefore="2" spacingAfter="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalDuplicadoCambio}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="317" y="150" width="47" height="20" uuid="3fdf6f05-f5e0-4033-894f-97aa50e555d0"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph spacingBefore="2" spacingAfter="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalAmpCambioClase}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="317" y="170" width="47" height="20" uuid="aea136f0-1c73-478b-8f7d-a236b73da6d3"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph spacingBefore="2" spacingAfter="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalRenovacionAmpliacion}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="317" y="190" width="47" height="20" uuid="7d6e3d0f-d56c-42c8-ad88-2a3d8f1bf535"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalTipoCategoria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="182" y="226" width="302" height="20" uuid="c1031dfa-00f2-4af3-885c-c8102df07d21"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nota (1) El registro abarca el periodo "+$P{parameter1}+" al "+$P{parameter2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>

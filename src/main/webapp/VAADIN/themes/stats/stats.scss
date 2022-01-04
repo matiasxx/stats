@@ -1,0 +1,142 @@
+// If you edit this file you need to compile the theme. See README.md for details.
+
+// Global variable overrides. Must be declared before importing Valo.
+
+// Defines the plaintext font size, weight and family. Font size affects general component sizing.
+//$v-font-size: 16px;
+//$v-font-weight: 300;
+//$v-font-family: "Open Sans", sans-serif;
+
+// Defines the border used by all components.
+//$v-border: 1px solid (v-shade 0.7);
+//$v-border-radius: 4px;
+
+// Affects the color of some component elements, e.g Button, Panel title, etc
+//$v-background-color: hsl(210, 0%, 98%);
+// Affects the color of content areas, e.g  Panel and Window content, TextField input etc
+//$v-app-background-color: $v-background-color;
+
+// Affects the visual appearance of all components
+//$v-gradient: v-linear 8%;
+//$v-bevel-depth: 30%;
+//$v-shadow-opacity: 5%;
+
+// Defines colors for indicating status (focus, success, failure)
+//$v-focus-color: valo-focus-color(); // Calculates a suitable color automatically
+//$v-friendly-color: #2c9720;
+//$v-error-indicator-color: #ed473b;
+
+// For more information, see: https://vaadin.com/book/-/page/themes.valo.html
+// Example variants can be copy/pasted from https://vaadin.com/wiki/-/wiki/Main/Valo+Examples
+
+@import "../valo/valo.scss";
+
+@mixin stats {
+  @include valo;
+  
+/*   .backColorGrey{                     	                                         */
+/*            background: url("imagenes/fondo-xxl-grande.png.jpg"); */
+/*    } */
+
+.login-panel {
+	@include valo-panel-style;
+	padding: 50px;
+	/* border-radius: 50px; */
+	width: 480px;
+	background-color: #005D86;
+	
+	}  
+	
+.view-encabezado {
+	
+	@include valo-panel-style;
+	/*padding: 15px;*/
+	color: #31698a;
+	padding-left: 20px;
+}	
+
+
+
+
+.backColorGrey{
+           /* background-color:#87DFC5; */
+/*             background: rgba(212,228,239,0.8); */
+        	/*background: rgb(0,93,134);   propuesto por inv*/
+        	background: url("imagenes/fondo-sin-nada.jpg"); 
+        	
+      }
+
+.v-tree-node{
+	
+	color: white;
+}
+
+.v-caption, .v-select-option{
+	
+	color: white;
+} 
+
+.v-button-recupero{
+	
+	color: grey;
+	outline: none;
+	border:0;
+	background-color:transparent;	
+}
+
+.v-upload-bigupload {
+  
+    
+    font-size:18px;
+    margin-bottom: -4px;  
+   	color: white;   
+}
+
+
+.v-filterselect-my-modificado{
+/*   background: transparent; */
+  padding: 0;
+}
+
+.v-filterselect-my-modificado .v-filterselect-input {
+  /* background: #fff;
+  border: 1px solid #bcbdbe;
+  border-top-color: #a2a3a4;
+  border-bottom-color: #d2d3d4;
+  background: #fff;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  margin: 0;
+  height: 15px; */
+  height:40px; /*altura del input donde tipea la gente*/
+  line-height: normal;
+/*   padding: 3px 3px 4px !important; */
+  font-size: 15px;
+
+}
+
+.v-filterselect-my-modificado .v-filterselect-button {
+  display: none;
+}
+
+.v-filterselect-suggestmenu .gwt-MenuItem {
+/*font-family: Courier;
+ font-weight: bold;
+color: #000000;
+font-size: 20pt; */
+font-size:12pt;
+white-space: nowrap;
+}
+
+.v-filterselect-my-modificado.v-filterselect-focus .v-filterselect-input,
+.v-filterselect-my-modificado .v-filterselect-input:focus {
+  border-color: #5b97d0;
+  border-top-color: #4f83b4;
+  border-bottom-color: #5ca0df;
+}
+
+
+
+
+}

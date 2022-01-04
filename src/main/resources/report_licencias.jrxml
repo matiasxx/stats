@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_licencias" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="96f4f489-ec56-4bd0-8e64-03398e602e9f">
+	<property name="ireport.zoom" value="1.6105100000000028"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="63"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Matias\\Desktop\\dit archicos\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="filter" class="java.lang.String"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="parameter2" class="java.lang.String"/>
+	<parameter name="parameter3" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from v_licencias_personas vlp  where $P!{filter}]]>
+	</queryString>
+	<field name="idLicencia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaCarga" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idPersona" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idTipoDeCarne" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lugarEmision" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sexoPersona" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="edad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estadoAprobacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="cantidadAtendidos" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{idLicencia}]]></variableExpression>
+	</variable>
+	<variable name="sexoM" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{sexoPersona}.equalsIgnoreCase("masculino") ? 1:0]]></variableExpression>
+	</variable>
+	<variable name="sexoF" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{sexoPersona}.equalsIgnoreCase("femenino") ? 1:0]]></variableExpression>
+	</variable>
+	<variable name="totalSexo" class="java.lang.Integer">
+		<variableExpression><![CDATA[$V{sexoM}+$V{sexoF}]]></variableExpression>
+	</variable>
+	<variable name="edad16a18" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[($F{edad}.equalsIgnoreCase("16") ||
+$F{edad}.equalsIgnoreCase("17") ||
+$F{edad}.equalsIgnoreCase("18")) ? 1:0]]></variableExpression>
+	</variable>
+	<variable name="edad19a45" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[($F{edad}.equalsIgnoreCase("19") ||
+$F{edad}.equalsIgnoreCase("20") ||
+$F{edad}.equalsIgnoreCase("21") ||
+$F{edad}.equalsIgnoreCase("22") ||
+$F{edad}.equalsIgnoreCase("23") ||
+$F{edad}.equalsIgnoreCase("24") ||
+$F{edad}.equalsIgnoreCase("25") ||
+$F{edad}.equalsIgnoreCase("26") ||
+$F{edad}.equalsIgnoreCase("27") ||
+$F{edad}.equalsIgnoreCase("28") ||
+$F{edad}.equalsIgnoreCase("29") ||
+$F{edad}.equalsIgnoreCase("30") ||
+$F{edad}.equalsIgnoreCase("31") ||
+$F{edad}.equalsIgnoreCase("32") ||
+$F{edad}.equalsIgnoreCase("33") ||
+$F{edad}.equalsIgnoreCase("34") ||
+$F{edad}.equalsIgnoreCase("35") ||
+$F{edad}.equalsIgnoreCase("36") ||
+$F{edad}.equalsIgnoreCase("37") ||
+$F{edad}.equalsIgnoreCase("38") ||
+$F{edad}.equalsIgnoreCase("39") ||
+$F{edad}.equalsIgnoreCase("40") ||
+$F{edad}.equalsIgnoreCase("41") ||
+$F{edad}.equalsIgnoreCase("42") ||
+$F{edad}.equalsIgnoreCase("43") ||
+$F{edad}.equalsIgnoreCase("44") ||
+$F{edad}.equalsIgnoreCase("45")) ? 1:0]]></variableExpression>
+	</variable>
+	<variable name="edad46a60" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[($F{edad}.equalsIgnoreCase("46") ||
+$F{edad}.equalsIgnoreCase("47") ||
+$F{edad}.equalsIgnoreCase("48") ||
+$F{edad}.equalsIgnoreCase("49") ||
+$F{edad}.equalsIgnoreCase("50") ||
+$F{edad}.equalsIgnoreCase("51") ||
+$F{edad}.equalsIgnoreCase("52") ||
+$F{edad}.equalsIgnoreCase("53") ||
+$F{edad}.equalsIgnoreCase("54") ||
+$F{edad}.equalsIgnoreCase("55") ||
+$F{edad}.equalsIgnoreCase("56") ||
+$F{edad}.equalsIgnoreCase("57") ||
+$F{edad}.equalsIgnoreCase("58") ||
+$F{edad}.equalsIgnoreCase("59") ||
+$F{edad}.equalsIgnoreCase("60")) ? 1:0]]></variableExpression>
+	</variable>
+	<variable name="edad61a75" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[($F{edad}.equalsIgnoreCase("61") ||
+$F{edad}.equalsIgnoreCase("62") ||
+$F{edad}.equalsIgnoreCase("63") ||
+$F{edad}.equalsIgnoreCase("64") ||
+$F{edad}.equalsIgnoreCase("65") ||
+$F{edad}.equalsIgnoreCase("66") ||
+$F{edad}.equalsIgnoreCase("67") ||
+$F{edad}.equalsIgnoreCase("68") ||
+$F{edad}.equalsIgnoreCase("69") ||
+$F{edad}.equalsIgnoreCase("70") ||
+$F{edad}.equalsIgnoreCase("71") ||
+$F{edad}.equalsIgnoreCase("72") ||
+$F{edad}.equalsIgnoreCase("73") ||
+$F{edad}.equalsIgnoreCase("74") ||
+$F{edad}.equalsIgnoreCase("75")) ? 1:0]]></variableExpression>
+	</variable>
+	<variable name="edad76mas" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[($F{edad}.equalsIgnoreCase("76") ||
+$F{edad}.equalsIgnoreCase("77") ||
+$F{edad}.equalsIgnoreCase("78") ||
+$F{edad}.equalsIgnoreCase("79") ||
+$F{edad}.equalsIgnoreCase("80") ||
+$F{edad}.equalsIgnoreCase("81") ||
+$F{edad}.equalsIgnoreCase("82") ||
+$F{edad}.equalsIgnoreCase("83") ||
+$F{edad}.equalsIgnoreCase("84") ||
+$F{edad}.equalsIgnoreCase("85") ||
+$F{edad}.equalsIgnoreCase("86") ||
+$F{edad}.equalsIgnoreCase("87") ||
+$F{edad}.equalsIgnoreCase("88") ||
+$F{edad}.equalsIgnoreCase("89") ||
+$F{edad}.equalsIgnoreCase("90") ||
+$F{edad}.equalsIgnoreCase("91") ||
+$F{edad}.equalsIgnoreCase("92") ||
+$F{edad}.equalsIgnoreCase("93")
+) ? 1:0]]></variableExpression>
+	</variable>
+	<variable name="totalEdad" class="java.lang.Integer">
+		<variableExpression><![CDATA[$V{edad16a18}+$V{edad19a45}+$V{edad46a60}+$V{edad61a75}
++$V{edad76mas}]]></variableExpression>
+	</variable>
+	<variable name="variable1" class="java.lang.Integer" incrementType="Report" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<variable name="estadoAprobacion" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{estadoAprobacion}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="101" splitType="Stretch">
+			<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER} == 1)]]></printWhenExpression>
+			<break>
+				<reportElement x="0" y="100" width="555" height="1" uuid="99747deb-ca51-4c1a-a3a3-cb9ef05323ec"/>
+			</break>
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="100" uuid="6424a961-edf7-49ed-b98b-6526d465386d"/>
+				<subreportParameter name="parameter2">
+					<subreportParameterExpression><![CDATA[$P{parameter2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="parameter1">
+					<subreportParameterExpression><![CDATA[$P{parameter1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="parameter3">
+					<subreportParameterExpression><![CDATA[$P{parameter3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["subreporte_licencias_titulo.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="104" splitType="Stretch">
+			<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER} != 1)]]></printWhenExpression>
+			<staticText>
+				<reportElement x="0" y="69" width="555" height="35" uuid="4ab45678-c5ff-42ad-bfb1-dfa29f27728b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADISTICAS GENERALES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="84" y="0" width="429" height="69" uuid="4f905737-33ce-4b3a-a85b-3572f68a868f"/>
+				<imageExpression><![CDATA[getClass().getResource("/imagenes/encab_rep.jpg")]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="535">
+			<textField evaluationTime="Report">
+				<reportElement x="261" y="74" width="69" height="20" uuid="6848a986-e445-42e1-bcc3-ac6d4733c4d4"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="9"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cantidadAtendidos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="180" y="54" width="81" height="20" backcolor="#330033" uuid="4e36614b-5d6b-43ef-b5f5-cdd03e25e2bd"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="true" isStrikeThrough="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Casos atendidos	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="54" width="69" height="20" uuid="f5d06e6a-ce6d-4379-80b2-b850f27110f8"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="74" width="81" height="20" uuid="e9db19b8-9ab2-45ba-ab3b-45ddfbaeb395"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="161" y="31" width="202" height="20" uuid="694577fb-dd18-4ffa-9586-f53856a4c800"/>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tabla 1. Cantidad de Casos atendidos.]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="261" y="199" width="69" height="20" uuid="e7a33e56-9291-46ac-86a9-8a19112e91ae"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sexoM}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="261" y="219" width="69" height="20" uuid="51f8a45a-200a-4bf9-a92d-8eb1056de6f5"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sexoF}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="161" y="159" width="277" height="20" uuid="fac0ea3d-60a4-4449-8c7d-8d2a0fe4a044"/>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tabla 2. Casos atendidos según sexo.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="179" width="69" height="20" uuid="2ec863ea-ee10-4f3a-8102-db13d609316b"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="180" y="179" width="81" height="20" backcolor="#330033" uuid="0eb2ae94-42e1-40a0-be2a-fc81177a1270"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="true" isStrikeThrough="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="199" width="81" height="20" uuid="ce02ebcb-6864-43ad-91d9-314276e07914"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Masculino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="219" width="81" height="20" uuid="51d9eb82-734a-420c-83bb-2748b01111b0"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Femenino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="239" width="81" height="20" uuid="56d4395e-bb8a-49e7-9446-891eae0301ea"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="261" y="239" width="69" height="20" uuid="b8ffae6a-008e-4603-b243-e1152a549d07"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalSexo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="161" y="322" width="277" height="20" uuid="eac5d101-ac21-463d-b743-8e4e5ed4fba1"/>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tabla 3. Casos atendidos por grupo de edad. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="180" y="342" width="81" height="20" backcolor="#330033" uuid="4950ad09-00a6-4faa-9036-f50f1020c1e3"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="true" isStrikeThrough="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Edad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="342" width="69" height="20" uuid="dd6f25b2-abd4-4e09-b8ef-ead6a3d88d7c"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="382" width="81" height="20" uuid="0d369348-3152-498c-ab83-308e78685ff8"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[19 a 45]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="362" width="81" height="20" uuid="679a00b5-0307-4311-99b1-a8deb3ecfdd4"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[16 a 18]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="402" width="81" height="20" uuid="87fe3780-29d5-4307-beaa-df501dba8ad3"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[46 a 60]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="422" width="81" height="20" uuid="5f2dacbc-dd4e-42f3-89a9-5ee0d8b430d6"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[61 a 75 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="442" width="81" height="20" uuid="9dbd9463-b33d-44c4-87b1-843597c7d34b"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[76 y mas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="462" width="81" height="20" uuid="bb919a7d-1d1d-4495-88cf-9035ae7030d5"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="261" y="362" width="69" height="20" uuid="b91c669d-3ee4-4675-9ffe-1233bbc613ef"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{edad16a18}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="261" y="382" width="69" height="20" uuid="a3795260-a1d6-4e0e-aef4-f3db1fd95e84"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{edad19a45}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="261" y="402" width="69" height="20" uuid="cdfe3133-bd06-4fad-a71a-e80068818a9f"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{edad46a60}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="261" y="422" width="69" height="20" uuid="567a6f9f-bc6e-4639-abad-95d426cb28ab"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{edad61a75}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="261" y="442" width="69" height="20" uuid="ba8e4ca4-7fcd-4538-8c09-a3aefd0b794f"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{edad76mas}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="261" y="462" width="69" height="20" uuid="789b838c-292e-458b-a473-99bab4576e6d"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif"/>
+					<paragraph rightIndent="2" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalEdad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="382" y="31" width="100" height="20" uuid="7dea9c60-6ec8-48f8-848b-bd4c792faa19"/>
+				<textElement verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[(1)(2)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="121" y="109" width="369" height="20" uuid="8f3fa417-1668-4eed-a969-87fd73615899"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nota (1) El registro abarca el periodo "+$P{parameter1}+" al "+$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="161" y="275" width="302" height="20" uuid="6b4c5a58-0a78-4c2d-bd48-d23f5b6377c0"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nota (1) El registro abarca el periodo "+$P{parameter1}+" al "+$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="161" y="502" width="302" height="20" uuid="74d1676e-b33e-4987-90d3-a22b469843ea"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nota (1) El registro abarca el periodo "+$P{parameter1}+" al "+$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="121" y="129" width="196" height="20" uuid="2943b2a6-9c8a-48ce-9f67-3557c9941ab7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nota (2) Cantidad de licencias validadas/sin validar: "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="317" y="129" width="20" height="20" uuid="27d9cd1d-3c97-43e4-b97f-c7816f4d0eda"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Integer ($V{estadoAprobacion}.intValue()+1) + " / "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="339" y="129" width="20" height="20" uuid="4b4feed3-37c9-4f29-b53c-a69f834a03d5"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT} - new Integer ($V{estadoAprobacion}.intValue()+1)]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="62" splitType="Stretch">
+			<image>
+				<reportElement x="71" y="0" width="484" height="44" uuid="a4b9dd23-a947-49c7-990c-55984aac0e53"/>
+				<imageExpression><![CDATA[getClass().getResource("/imagenes/PiedepaginaNUEVO2.jpg")]]></imageExpression>
+			</image>
+			<textField evaluationTime="Report" isBlankWhenNull="true">
+				<reportElement x="277" y="46" width="40" height="16" forecolor="#777777" uuid="f2fb1b52-9511-423d-b314-d75c7f4012e4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="197" y="46" width="80" height="16" forecolor="#777777" uuid="0d749b6d-a1e1-4639-b252-c1fee124c75f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="50" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="50" uuid="c7b0b6e6-45a9-4c39-a366-48f285c30d0f"/>
+				<subreportParameter name="SUBREPORT_DIR"/>
+				<subreportParameter name="parameter2">
+					<subreportParameterExpression><![CDATA[$P{parameter2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="parameter1">
+					<subreportParameterExpression><![CDATA[$P{parameter1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="filter">
+					<subreportParameterExpression><![CDATA[$P{filter}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="parameter3">
+					<subreportParameterExpression><![CDATA[$P{parameter3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["subreport_licencias_cdc.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

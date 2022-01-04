@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_licencia_detalle" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="db5a0969-f0bb-4577-ac1f-ff8e4a66ae9e">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="filter" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="parameter2" class="java.lang.String"/>
+	<parameter name="parameter3" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT lc.idLicencia, lc.fechaCarga AS fechaCarga,lc.lugarEmision AS centro, p.nombre AS nombre, p.apellido AS apellio,
+p.tipoDocumento AS tipoDoc, p.numeroDeDocumento AS documento, p.genero AS sexo, p.edad AS edad, tc.tiposDeCarne AS tipoCarne,cdc.clasesDeCarne AS claseDeCarne, lc.estadoAprobacion AS aprobado
+FROM licenciaConducir lc INNER JOIN personas p ON (lc.idPersona = p.idPersona)
+								 INNER JOIN tipoDeCarnet tc ON (lc.idTipoDeCarne = tc.idTipos)
+								 INNER JOIN ldc_cdc var ON (var.idLicencia = lc.idLicencia)
+								 INNER JOIN clasesDeCarnet cdc ON (cdc.idCarne = var.idCdC)
+
+where $P!{filter}]]>
+	</queryString>
+	<field name="idLicencia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaCarga" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="centro" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellio" class="java.lang.String"/>
+	<field name="tipoDoc" class="java.lang.String"/>
+	<field name="documento" class="java.lang.String"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="edad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoCarne" class="java.lang.String"/>
+	<field name="claseDeCarne" class="java.lang.String"/>
+	<field name="aprobado" class="java.lang.Integer"/>
+	<variable name="idLicencia_1" class="java.lang.Integer" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{idLicencia}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="71" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="325" height="64" uuid="f2764b84-8a81-4f52-bac5-5f6432e6e49d"/>
+				<imageExpression><![CDATA[getClass().getResource("/imagenes/encab_rep.jpg")]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="373" y="0" width="227" height="20" uuid="d3138c84-14f6-40de-8b3f-28b0c9742c6f"/>
+				<textElement>
+					<font fontName="SansSerif" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Detalle licencias emitidas entre]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="600" y="0" width="88" height="20" uuid="93b36c2a-1a9e-438a-abb2-c876b2c73bf3"/>
+				<textElement>
+					<font fontName="SansSerif" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="688" y="0" width="13" height="20" uuid="b28468ad-df7c-44ea-a2a8-5eda9005d1c2"/>
+				<textElement>
+					<font fontName="SansSerif" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[y]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="701" y="0" width="101" height="20" uuid="ae90fc8b-8c7b-4562-8767-565891aef3ea"/>
+				<textElement>
+					<font fontName="SansSerif" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="325" y="44" width="212" height="20" uuid="676ce925-3137-4f43-98c4-d7848bf10ccd"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad de clases de carné:]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="537" y="44" width="63" height="20" uuid="9faea357-0da5-4629-a1b2-ad1571a80425"/>
+				<textElement>
+					<font fontName="SansSerif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="600" y="25" width="73" height="20" uuid="cec5a257-615d-49cc-9217-46662d437e06"/>
+				<textElement>
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMISION:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="673" y="25" width="118" height="20" uuid="47a284e8-17d6-445a-9149-abb9714f3a54"/>
+				<textElement>
+					<font fontName="SansSerif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="325" y="25" width="212" height="20" uuid="b5de0bdf-35e8-4894-b008-11b5faa5111d"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad de licencias:]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="537" y="25" width="63" height="20" uuid="254f21f5-a7bb-4424-a3d9-6457d4ccd826"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{idLicencia_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="63" height="20" uuid="36b1c1d7-d619-4dee-88ee-522d86e3292d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="0" width="74" height="20" uuid="3f669cc9-acce-4d3d-b407-8cb16d2cdc6b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Emisión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="0" width="88" height="20" uuid="f316c32e-e0a0-4aa5-a52b-9cdf963d2355"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="0" width="100" height="20" uuid="103592a4-a242-4c86-93c5-750c141fa51b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="0" width="67" height="20" uuid="1588c03f-a3d5-4971-9c62-e8975336042b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Doc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="392" y="0" width="71" height="20" uuid="c1c87487-f6f8-44fa-817e-67379ed9de12"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="463" y="0" width="85" height="20" uuid="e8963632-0c4c-446b-b042-6ca69b3b10dd"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="548" y="0" width="39" height="20" uuid="99373ed6-dbda-4996-bac9-093cc1e697f6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Edad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="587" y="0" width="73" height="20" uuid="27e4e301-9015-4f34-b891-5550ea9e4a63"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Carné]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="660" y="0" width="41" height="20" uuid="5d109d8e-048e-4734-8785-0ffbab3f7a41"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clase]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="702" y="0" width="100" height="20" uuid="7bafbb06-e772-4684-a690-3b13da971e21"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="63" height="20" uuid="8ec19632-ccdf-4b06-a71a-027c62d15e0f"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{fechaCarga})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="63" y="0" width="74" height="20" uuid="abcb070c-4a3b-4097-af8d-ad498cc15456"/>
+				<textFieldExpression><![CDATA[$F{centro}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="137" y="0" width="88" height="20" uuid="fb49e1da-2585-4b19-9d98-00dcfd44726f"/>
+				<textFieldExpression><![CDATA[$F{apellio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="0" width="100" height="20" uuid="0262d2d4-b09b-4b2c-b6de-7feae9039724"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="325" y="0" width="67" height="20" uuid="a448c50c-8846-4763-b742-1b1137f12088"/>
+				<textFieldExpression><![CDATA[$F{tipoDoc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="392" y="0" width="71" height="20" uuid="d2abb614-50f1-4ad9-87b8-e4deabd19482"/>
+				<textFieldExpression><![CDATA[$F{documento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="463" y="0" width="85" height="20" uuid="f510d4f9-520e-4402-a692-baa6fcf9fa21"/>
+				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="548" y="0" width="39" height="20" uuid="725c257a-e077-4aa0-8eea-4c0453ef788d"/>
+				<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="587" y="0" width="73" height="20" uuid="d7cc3ed9-7a31-445b-9d71-690a877d0bc8"/>
+				<textFieldExpression><![CDATA[$F{tipoCarne}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="660" y="0" width="41" height="20" uuid="0cde25b6-bd6c-4a03-a065-6741ca5a77b6"/>
+				<textFieldExpression><![CDATA[$F{claseDeCarne}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="702" y="0" width="100" height="20" uuid="b94b29b3-fc18-49a8-b846-4cb918366d50"/>
+				<textFieldExpression><![CDATA[$F{aprobado} == 1?"APROBADO":"NO APROBADO"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="66">
+			<image>
+				<reportElement x="202" y="0" width="600" height="50" uuid="aee48321-e17e-4f79-8021-c41ab680c1e2"/>
+				<imageExpression><![CDATA[getClass().getResource("/imagenes/PiedepaginaNUEVO2.jpg")]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="356" y="50" width="80" height="16" forecolor="#777777" uuid="6e502ebb-8734-4ba7-ae67-78ead5f82f9b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="true">
+				<reportElement x="436" y="50" width="40" height="16" forecolor="#777777" uuid="d62f888e-0887-435f-9518-bda8618d8fb7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

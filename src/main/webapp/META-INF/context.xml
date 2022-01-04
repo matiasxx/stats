@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+
+<WatchedResource>WEB-INF/web.xml</WatchedResource>
+<!-- Uncomment this to disable session persistence across Tomcat restarts -->
+
+<Manager pathname="" />
+
+<!-- <Resource name="jdbc/ecodeup" auth="Container"  -->
+<!-- 		type="javax.sql.DataSource"	driverClassName="com.mysql.jdbc.Driver" -->
+<!-- 		url="jdbc:mysql://190.7.61.146:3306/comodoro_stats" -->
+<!-- 		username="comodoro_stat" password="Is3W!2+92eh^" -->
+<!-- 		maxTotal="100" maxIdle="30" maxWaitMillis="10000" resource-ref="true" -->
+<!-- 		 /> -->
+</Context> 
+
+<!-- 		url="jdbc:mysql://190.7.61.146:3306/comodoro_stats" -->
